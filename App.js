@@ -3,17 +3,18 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import HomeScreen from './src/Screens/HomeScreen';
+import SelectListScreen from './src/Screens/SelectListScreen';
 import CreateListScreen from './src/Screens/CreateListScreen';
-import SavedListsScreen from './src/Screens/SavedListsScreen';
 import SettingsScreen from './src/Screens/SettingsScreen';
 import InfoScreen from './src/Screens/InfoScreen';
 
 import { Provider as StylingProvider } from './src/Context/StylingContext';
+import { Provider as ListProvider } from './src/Context/ListContext';
 
 const stackNavigator = createStackNavigator({
-  Home: HomeScreen,
   CreateList: CreateListScreen,
-  SavedLists: SavedListsScreen,
+  Home: HomeScreen,
+  SelectList: SelectListScreen,
   Settings: SettingsScreen,
   Info: InfoScreen
 },
@@ -25,8 +26,10 @@ const App = createAppContainer(stackNavigator);
 
 export default () => {
   return (
-    <StylingProvider>
-      <App />
-    </StylingProvider>
+    <ListProvider>
+      <StylingProvider>
+        <App />
+      </StylingProvider>
+    </ListProvider>
   )
 }

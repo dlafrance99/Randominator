@@ -4,14 +4,17 @@ import { Text } from 'react-native-elements';
 
 import { Context as StylingContext } from '../Context/StylingContext';
 
-const GenericButton = ({ title, target }) => {
+
+const ListSelectionButt = ({ title, target }) => {
+
     //Context
     const { state: { FontColor } } = useContext(StylingContext)
+
 
     return (
         <>
             <TouchableOpacity onPress={() => target()} style={[styles.Butt, { borderColor: FontColor, shadowColor: FontColor }]}>
-                <Text h3 style={[styles.Text, { color: FontColor, textShadowColor: FontColor }]}>
+                <Text h2 style={[styles.Text, { color: FontColor, textShadowColor: FontColor }]}>
                     {title}
                 </Text>
             </TouchableOpacity>
@@ -25,6 +28,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         margin: 5,
         padding: 5,
+        paddingHorizontal: 20,
         borderRadius: 10,
         marginVertical: 20,
         shadowRadius: 5,
@@ -37,4 +41,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default GenericButton;
+export default ListSelectionButt;

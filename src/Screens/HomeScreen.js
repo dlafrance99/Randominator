@@ -19,16 +19,17 @@ const HomeScreen = ({ navigation }) => {
 
                 <View style={styles.content}>
                     <GenericButton
-                        title='CREATE NEW LIST'
+                        title='RANDOMINATE'
+                        style={styles.Butt}
+                        target={() => navigation.navigate('SelectList')}
+                    />
+
+                    <GenericButton
+                        title='CREATE LIST'
                         style={styles.Butt}
                         target={() => navigation.navigate('CreateList')}
                     />
 
-                    <GenericButton
-                        title='SAVED LIST'
-                        style={styles.Butt}
-                        target={() => navigation.navigate('SavedLists')}
-                    />
                 </View>
 
                 <Footer />
