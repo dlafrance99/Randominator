@@ -14,9 +14,7 @@ const SelectListScreen = ({ navigation }) => {
     const { state: { List } } = useContext(ListContext)
 
     //Functions
-    useEffect(() => {
-        console.log({ List })
-    }, [])
+
 
     //Show
     const showLists = () => {
