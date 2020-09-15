@@ -2,14 +2,16 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
 
-const SavedListsScreen = () => {
+import Header from '../Components/Header';
+const SavedListsScreen = ({navigation}) => {
     return (
         <>
             <View style={styles.wrapper}>
                 <Header
                     title='SAVED LISTS'
+                    design='Subheader'
+                    target={() => navigation.navigate('Home')}
                 />
-
 
             </View>
         </>

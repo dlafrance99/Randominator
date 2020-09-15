@@ -8,6 +8,8 @@ import SavedListsScreen from './src/Screens/SavedListsScreen';
 import SettingsScreen from './src/Screens/SettingsScreen';
 import InfoScreen from './src/Screens/InfoScreen';
 
+import { Provider as StylingProvider } from './src/Context/StylingContext';
+
 const stackNavigator = createStackNavigator({
   Home: HomeScreen,
   CreateList: CreateListScreen,
@@ -23,6 +25,8 @@ const App = createAppContainer(stackNavigator);
 
 export default () => {
   return (
-    <App />
+    <StylingProvider>
+      <App />
+    </StylingProvider>
   )
 }
