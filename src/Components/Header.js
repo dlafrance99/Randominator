@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 50,
         fontSize: 40,
-        flex: 3,
+        flex: 5,
         textShadowRadius: 15
     },
     row: {

@@ -41,7 +41,7 @@ const CreateListScreen = ({ navigation }) => {
             return setListNameError(true)
         }
 
-        if (Item===''){
+        if (Item!==''){
             ListItems.push(Item)
         }
 
@@ -66,6 +66,7 @@ const CreateListScreen = ({ navigation }) => {
                 <>
                     <ListingItems
                         unit={ListItems[i]}
+                        key={ListItems[i]}
                     />
                 </>
             )

@@ -11,13 +11,16 @@ import ListSelectionButt from '../Components/ListSelectionButt';
 const SelectListScreen = ({ navigation }) => {
 
     //Context
-    const { state: { List } } = useContext(ListContext)
+    const { state: { List }, ChangeSelectedList } = useContext(ListContext)
 
     //Functions
-
+    const handleListSelection = (value) => {
+        ChangeSelectedList(value)
+        navigation.navigate('Randominate')
+    }
 
     //Show
-    const showLists = () => {
+    const showListItems = () => {
         let Lists = [];
 
         for (let i = 0; i < List.length; i++) {
@@ -25,7 +28,8 @@ const SelectListScreen = ({ navigation }) => {
                 <>
                     <ListSelectionButt
                         title={List[i].Name}
-                        target={()=>console.log('hit this list selection')}
+                        key={List[i].Name}
+                        target={() => handleListSelection(i)}
                     />
                 </>
             )
@@ -44,7 +48,7 @@ const SelectListScreen = ({ navigation }) => {
                 />
 
                 <ScrollView style={styles.content}>
-                    {showLists()}
+                    {showListItems()}
                 </ScrollView>
             </View>
         </>
