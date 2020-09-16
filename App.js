@@ -9,6 +9,8 @@ import HomeScreen from './src/Screens/HomeScreen';
 import SelectListScreen from './src/Screens/SelectListScreen';
 import RandominateScreen from './src/Screens/RandominateScreen';
 import CreateListScreen from './src/Screens/CreateListScreen';
+import SelectEditListScreen from './src/Screens/SelectEditListScreen';
+import EditListScreen from './src/Screens/EditListScreen';
 import SettingsScreen from './src/Screens/SettingsScreen';
 import InfoScreen from './src/Screens/InfoScreen';
 
@@ -22,6 +24,8 @@ const stackNavigator = createSwitchNavigator({
     SelectList: SelectListScreen,
     Randominate: RandominateScreen,
     CreateList: CreateListScreen,
+    SelectEditList: SelectEditListScreen,
+    EditList: EditListScreen,
     Settings: SettingsScreen,
     Info: InfoScreen
   },

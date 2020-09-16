@@ -30,6 +30,12 @@ const HomeScreen = ({ navigation }) => {
                         target={() => navigation.navigate('CreateList')}
                     />
 
+                    <GenericButton
+                        title='EDIT LISTS'
+                        style={styles.Butt}
+                        target={() => navigation.navigate('SelectEditList')}
+                    />
+
                 </View>
 
                 <Footer />
