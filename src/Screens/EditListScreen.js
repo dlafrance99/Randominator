@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import { Text } from 'react-native-elements';
 
 import { Context as ListContext } from '../Context/ListContext';
@@ -8,22 +8,30 @@ import Header from '../Components/Header';
 import ChangeColor from '../Components/ChangeColor';
 import DeleteItemLayout from '../Components/DeleteItemLayout';
 import Spacer from '../Components/Spacer';
+import EditListNameLayout from '../Components/EditListNameLayout';
 import DeleteListLayout from '../Components/DeleteListLayout';
 import DeleteConfirmationOverlay from '../Components/DeleteConfirmationOverlay';
 import PlusButton from '../Components/PlusButton';
+import GenericInput from '../Components/GenericInput';
+
+const SCREEN_WIDTH = Dimensions.get('window').width
 
 const EditListScreen = ({ navigation }) => {
-    //State
+    //State--------------------------------------
     const [DeleteConfirm, setDeleteConfirm] = useState(false)
     const [CurrentList, setCurrentList] = useState('')
+    const [Item, setItem] = useState('')
+    const [ChangeName, setChangeName] = useState(false)
+    const [NewName, setNewName] = useState('')
 
-    //Context
+    //Context--------------------------------------
     const { state: { List, SelectedList }, setList } = useContext(ListContext)
 
-    //Functions
+    //Functions--------------------------------------
     //UseEffect
     useEffect(() => {
         setDeleteConfirm(false)
+        setChangeName(false)
         setCurrentList(List[SelectedList].Name)
     }, [])
 
@@ -66,7 +74,49 @@ const EditListScreen = ({ navigation }) => {
         navigation.navigate('SelectEditList')
     }
 
-    //Show
+    //Adds Items to list
+    const handleAddItems = () => {
+        let ListItems = List[SelectedList].Array
+        ListItems.push(Item)
+        let updatedList = { Name: List[SelectedList].Name, Array: ListItems }
+
+        let MainList = []
+
+        for (let i = 0; i < List.length; i++) {
+            if (i !== SelectedList) {
+                MainList.push(List[i])
+            } else if (i === SelectedList) {
+                MainList.push(updatedList)
+            }
+        }
+
+        setItem('')
+
+        setList(MainList)
+    }
+
+    //Edits Name Change
+    const handleNameChange = () => {
+        let updatedList = { Name: NewName, Array: List[SelectedList].Array }
+
+        let MainList = [];
+
+        for (let i = 0; i < List.length; i++) {
+            if (i !== SelectedList) {
+                MainList.push(List[i])
+            } else if (i === SelectedList) {
+                MainList.push(updatedList)
+            }
+        }
+
+        setNewName('')
+        setChangeName(false)
+        setCurrentList(NewName)
+
+        setList(MainList)
+    }
+
+    //Show--------------------------------------
     const showItems = () => {
         let Item = [];
 
@@ -112,10 +162,41 @@ const EditListScreen = ({ navigation }) => {
 
                                 <Spacer />
 
-                                <PlusButton 
-                                
+                                <GenericInput
+                                    title="Add Item"
+                                    val={Item}
+                                    onChangeVal={setItem}
                                 />
 
+                                <PlusButton
+                                    target={() => handleAddItems()}
+                                />
+
+                                <Spacer />
+
+                                {
+                                    ChangeName
+                                        ?
+                                        <>
+                                            <GenericInput
+                                                title='Change Name'
+                                                val={NewName}
+                                                onChangeVal={setNewName}
+                                            />
+
+                                            <EditListNameLayout
+                                                title='Save Name'
+                                                target={() => handleNameChange()}
+                                            />
+                                        </>
+                                        :
+                                        <EditListNameLayout
+                                            title='Edit List Name'
+                                            target={() => setChangeName(true)}
+                                        />
+                                }
+
+                                <Spacer />
                                 <Spacer />
                             </ScrollView>
 
@@ -139,7 +220,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#09090a'
     },
     content: {
-        flex: 1
+        flex: 1,
+        width: .9 * SCREEN_WIDTH,
+        alignSelf: 'center'
     },
 })
 

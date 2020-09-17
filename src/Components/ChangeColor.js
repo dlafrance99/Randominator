@@ -7,11 +7,11 @@ import Countdown from '../Components/Countdown';
 
 const ChangeColor = () => {
     //Context
-    const { state: { ChangeColors, ListOfFontColors, FontColor }, changeFontColor } = useContext(StylingContext)
+    const { state: { ChangeColors, ListOfFontColors }, changeFontColor } = useContext(StylingContext)
 
     //Functions
     const updateFontColor = () => {
-        const randomNum = Math.ceil(Math.random() * ListOfFontColors.length)
+        const randomNum = Math.floor(Math.random() * ListOfFontColors.length)
 
         let newColor = ListOfFontColors[randomNum]
 
@@ -29,6 +29,7 @@ const ChangeColor = () => {
             <Countdown
                 isActive={ChangeColors}
                 target={() => updateFontColor()}
+                timeToChange={3000}
             />
         </>
     )

@@ -1,23 +1,49 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
 
 import { Context as ListContext } from '../Context/ListContext';
+import { Context as StylingContext } from '../Context/StylingContext';
 
-import ChangeColor from '../Components/ChangeColor';
 import Header from '../Components/Header';
 import SubHeader from '../Components/SubHeader';
 import ItemsLayout from '../Components/ItemsLayout';
 import Spacer from '../Components/Spacer';
+import Countdown from '../Components/Countdown';
 
 const RandominateScreen = ({ navigation }) => {
-    //UseEffect
-    useEffect(() => {
+    //State--------------------------------
+    const [RandomNum, setRandomNum] = useState(0)
+    const [CountdownInterval, setCountdownInterval] = useState(2)
+    const [RandominatorRunning, setRandominatorRunning] = useState(true)
 
-    }, [])
+    //FIGURE OUT THE COUNTDOWN INTERVAL AND WHY SETCOUNTDOWN ISN'T ACTUALLY CHANGING ANYTHING!!!!!!!!!!!!!!!!!!!!!!!
 
-    //Context
+    //Context--------------------------------
     const { state: { List, SelectedList } } = useContext(ListContext)
+    const { state: { ListOfFontColors }, changeFontColor } = useContext(StylingContext)
+
+    //Functions--------------------------------
+    
+    //Random Number Generator
+    const RandomNumberGenerator = () => {
+        let ranNum = Math.floor(Math.random() * List[SelectedList].Array.length)
+
+        setRandomNum(ranNum)
+    }
+
+    //Random Color Generator
+    const RandomColorGenerator = () => {
+        let ranNum = Math.floor(Math.random() * ListOfFontColors.length)
+
+        changeFontColor(ListOfFontColors[ranNum])
+    }
+
+    //Choose the next item
+    const NextSelection = () => {
+        RandomNumberGenerator()
+        RandomColorGenerator()
+    }
 
     //Show
     const showItems = () => {
@@ -27,20 +53,35 @@ const RandominateScreen = ({ navigation }) => {
             for (let i = 0; i < List[SelectedList].Array.length; i++) {
                 Item.push(
                     <>
-                        <ItemsLayout title={List[SelectedList].Array[i]} />
+
+                        <ItemsLayout
+                            title={List[SelectedList].Array[i]}
+                            randoNum={RandomNum}
+                            index={i}
+                        />
+
                     </>
                 )
             }
         } else if (List[SelectedList].Array.length > 4 && List[SelectedList].Array.length < 7) {
+
             for (let i = 0; i < List[SelectedList].Array.length; i += 2) {
                 Item.push(
                     <>
                         <View style={styles.row}>
-                            <ItemsLayout title={List[SelectedList].Array[i]} />
+                            <ItemsLayout
+                                title={List[SelectedList].Array[i]}
+                                randoNum={RandomNum}
+                                index={i}
+                            />
                             {
                                 List[SelectedList].Array[i + 1]
                                     ?
-                                    <ItemsLayout title={List[SelectedList].Array[i + 1]} />
+                                    <ItemsLayout
+                                        title={List[SelectedList].Array[i + 1]}
+                                        randoNum={RandomNum}
+                                        index={i + 1}
+                                    />
                                     :
                                     null
                             }
@@ -54,7 +95,12 @@ const RandominateScreen = ({ navigation }) => {
     }
     return (
         <>
-            <ChangeColor />
+            <Countdown
+                isActive={RandominatorRunning}
+                target={() => NextSelection()}
+                timeToChange={3000}
+            />
+
             <View style={styles.wrapper}>
                 <Header
                     title='Randominating'

@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 
-const Countdown = ({ isActive, target }) => {
+const Countdown = ({ isActive, target, timeToChange }) => {
     useEffect(() => {
         let interval = null;
         if (isActive) {
             interval = setInterval(() => {
                 target()
-            }, 3000)
+            }, timeToChange)
         } else if (!isActive) {
             clearInterval(interval)
         }

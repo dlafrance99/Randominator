@@ -14,7 +14,6 @@ import PlusButton from '../Components/PlusButton';
 import ListingItems from '../Components/ListingItems';
 
 const SCREEN_WIDTH = Dimensions.get('window').width
-const SCREEN_HEIGHT = Dimensions.get('window').height
 
 const CreateListScreen = ({ navigation }) => {
 

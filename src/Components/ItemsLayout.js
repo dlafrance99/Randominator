@@ -1,21 +1,33 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
 
 import { Context as StylingContext } from '../Context/StylingContext';
 
-const ItemsLayout = ({ title }) => {
+const ItemsLayout = ({ title, randoNum, index }) => {
+    //State
+    const [Color, setColor] = useState('#747474')
 
     //Context
     const { state: { FontColor } } = useContext(StylingContext)
 
     return (
         <>
-            <View style={[styles.Border, { borderColor: FontColor, shadowColor: FontColor }]}>
-                <Text style={[styles.HeaderFont, { color: FontColor, textShadowColor: FontColor }]}>
-                    {title}
-                </Text>
-            </View>
+            {
+                randoNum === index
+                    ?
+                    <View style={[styles.Border, { borderColor: FontColor, shadowColor: FontColor }]}>
+                        <Text style={[styles.HeaderFont, { color: FontColor, textShadowColor: FontColor }]}>
+                            {title}
+                        </Text>
+                    </View>
+                    :
+                    <View style={[styles.Border, { borderColor: Color, shadowColor: Color }]}>
+                        <Text style={[styles.HeaderFont, { color: Color, textShadowColor: Color }]}>
+                            {title}
+                        </Text>
+                    </View>
+            }
         </>
     )
 }
