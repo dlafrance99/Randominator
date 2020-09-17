@@ -10,11 +10,12 @@ import DeleteItemLayout from '../Components/DeleteItemLayout';
 import Spacer from '../Components/Spacer';
 import DeleteListLayout from '../Components/DeleteListLayout';
 import DeleteConfirmationOverlay from '../Components/DeleteConfirmationOverlay';
+import PlusButton from '../Components/PlusButton';
 
 const EditListScreen = ({ navigation }) => {
     //State
     const [DeleteConfirm, setDeleteConfirm] = useState(false)
-    const [CurrentList, setCurrentList] = useState(List[SelectedList].Name)
+    const [CurrentList, setCurrentList] = useState('')
 
     //Context
     const { state: { List, SelectedList }, setList } = useContext(ListContext)
@@ -23,6 +24,7 @@ const EditListScreen = ({ navigation }) => {
     //UseEffect
     useEffect(() => {
         setDeleteConfirm(false)
+        setCurrentList(List[SelectedList].Name)
     }, [])
 
     //Deletes a Single Item
@@ -81,12 +83,14 @@ const EditListScreen = ({ navigation }) => {
 
         return Item;
     }
+
+
     return (
         <>
             <ChangeColor />
             <View style={styles.wrapper}>
                 <Header
-                    title={'Edit List: "' + List[SelectedList].Name + '"'}
+                    title={'Edit List: "' + CurrentList + '"'}
                     design='Subheader'
                     target={() => navigation.navigate('SelectEditList')}
                 />
@@ -99,14 +103,19 @@ const EditListScreen = ({ navigation }) => {
                         <DeleteConfirmationOverlay
                             targetDelete={(value) => handleDeleteList(value)}
                             targetCancel={() => setDeleteConfirm(false)}
+                            ListName={CurrentList}
                         />
                         :
                         <>
                             <ScrollView style={styles.content}>
                                 {showItems()}
 
-
                                 <Spacer />
+
+                                <PlusButton 
+                                
+                                />
+
                                 <Spacer />
                             </ScrollView>
 

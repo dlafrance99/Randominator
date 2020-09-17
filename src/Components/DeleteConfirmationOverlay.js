@@ -8,7 +8,7 @@ import Spacer from './Spacer';
 
 const SCREEN_WIDTH = Dimensions.get('window').width
 
-const DeleteConfirmationOverlay = ({ targetDelete, targetCancel }) => {
+const DeleteConfirmationOverlay = ({ targetDelete, targetCancel, ListName }) => {
 
     //Context
     const { state: { List, SelectedList }, setList } = useContext(ListContext)
@@ -20,7 +20,7 @@ const DeleteConfirmationOverlay = ({ targetDelete, targetCancel }) => {
                     <Spacer />
 
                     <Text style={styles.HeaderFontRed}>
-                        Are You Sure You Want to Delete List: "{List[SelectedList].Name}"?
+                        Are You Sure You Want to Delete List: "{ListName}"?
                     </Text>
 
                     <Spacer />
