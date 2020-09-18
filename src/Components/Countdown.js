@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 
 const Countdown = ({ isActive, target, timeToChange }) => {
+
+
     useEffect(() => {
         let interval = null;
         if (isActive) {

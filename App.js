@@ -8,6 +8,7 @@ import ResolveLoadingScreen from './src/Screens/ResolveLoadingScreen';
 import HomeScreen from './src/Screens/HomeScreen';
 import SelectListScreen from './src/Screens/SelectListScreen';
 import RandominateScreen from './src/Screens/RandominateScreen';
+import RandoNumberScreen from './src/Screens/RandoNumberScreen';
 import CreateListScreen from './src/Screens/CreateListScreen';
 import SelectEditListScreen from './src/Screens/SelectEditListScreen';
 import EditListScreen from './src/Screens/EditListScreen';
@@ -23,6 +24,7 @@ const stackNavigator = createSwitchNavigator({
     Home: HomeScreen,
     SelectList: SelectListScreen,
     Randominate: RandominateScreen,
+    RandoNumber: RandoNumberScreen,
     CreateList: CreateListScreen,
     SelectEditList: SelectEditListScreen,
     EditList: EditListScreen,

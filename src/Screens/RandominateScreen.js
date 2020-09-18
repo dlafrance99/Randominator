@@ -14,17 +14,15 @@ import Countdown from '../Components/Countdown';
 const RandominateScreen = ({ navigation }) => {
     //State--------------------------------
     const [RandomNum, setRandomNum] = useState(0)
-    const [CountdownInterval, setCountdownInterval] = useState(2)
     const [RandominatorRunning, setRandominatorRunning] = useState(true)
-
-    //FIGURE OUT THE COUNTDOWN INTERVAL AND WHY SETCOUNTDOWN ISN'T ACTUALLY CHANGING ANYTHING!!!!!!!!!!!!!!!!!!!!!!!
+    const [TimeInterval, setTimeInterval] = useState(2000)
 
     //Context--------------------------------
     const { state: { List, SelectedList } } = useContext(ListContext)
     const { state: { ListOfFontColors }, changeFontColor } = useContext(StylingContext)
 
     //Functions--------------------------------
-    
+
     //Random Number Generator
     const RandomNumberGenerator = () => {
         let ranNum = Math.floor(Math.random() * List[SelectedList].Array.length)
@@ -41,6 +39,7 @@ const RandominateScreen = ({ navigation }) => {
 
     //Choose the next item
     const NextSelection = () => {
+        setTimeInterval(latestTimeInterval => latestTimeInterval + 1000)
         RandomNumberGenerator()
         RandomColorGenerator()
     }
@@ -98,7 +97,7 @@ const RandominateScreen = ({ navigation }) => {
             <Countdown
                 isActive={RandominatorRunning}
                 target={() => NextSelection()}
-                timeToChange={3000}
+                timeToChange={TimeInterval}
             />
 
             <View style={styles.wrapper}>
@@ -109,6 +108,9 @@ const RandominateScreen = ({ navigation }) => {
                 />
 
                 <SubHeader title={List[SelectedList].Name} />
+
+                {/* Delete this later */}
+                <SubHeader title={TimeInterval} />
 
                 <Spacer />
 

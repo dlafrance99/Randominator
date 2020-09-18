@@ -23,6 +23,12 @@ const HomeScreen = ({ navigation }) => {
                         style={styles.Butt}
                         target={() => navigation.navigate('SelectList')}
                     />
+                    
+                    <GenericButton
+                        title='RANDO NUMBER'
+                        style={styles.Butt}
+                        target={() => navigation.navigate('RandoNumber')}
+                    />
 
                     <GenericButton
                         title='CREATE LIST'

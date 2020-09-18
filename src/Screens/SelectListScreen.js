@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { Text } from 'react-native-elements';
 
@@ -36,7 +36,7 @@ const SelectListScreen = ({ navigation }) => {
         }
         return Lists;
     }
-
+    
     return (
         <>
             <ChangeColor />

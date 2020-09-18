@@ -4,10 +4,19 @@ import { Input } from 'react-native-elements';
 import { Context as StylingContext } from '../Context/StylingContext';
 
 
-const GenericInput = ({ title, val, onChangeVal }) => {
+const GenericInput = ({ title, val, onChangeVal, design }) => {
 
     //Context
     const { state: { FontColor } } = useContext(StylingContext)
+
+    //Functions
+    const handleKeyboardDesign = () => {
+        if (design === 'Number') {
+            return 'numbers-and-punctuation'
+        } else {
+            return 'default'
+        }
+    }
 
     return (
         <>
@@ -20,6 +29,7 @@ const GenericInput = ({ title, val, onChangeVal }) => {
                 onChangeText={onChangeVal}
                 keyboardAppearance='dark'
                 returnKeyType='done'
+                keyboardType={handleKeyboardDesign()}
             />
         </>
     )
