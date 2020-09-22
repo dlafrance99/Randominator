@@ -1,19 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Countdown = ({ isActive, target, timeToChange }) => {
 
+    const [Active, setActive] = useState(isActive)
+
+    const handleTimeExpire = async () => {
+        await target()
+        setActive(true)
+    }
 
     useEffect(() => {
         let interval = null;
-        if (isActive) {
+        if (Active) {
             interval = setInterval(() => {
-                target()
+                setActive(false)
+                handleTimeExpire()
             }, timeToChange)
-        } else if (!isActive) {
+        } else if (!Active) {
             clearInterval(interval)
         }
         return () => clearInterval(interval)
-    }, [isActive])
+    }, [Active])
 
     return null
 }

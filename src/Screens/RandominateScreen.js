@@ -15,7 +15,7 @@ const RandominateScreen = ({ navigation }) => {
     //State--------------------------------
     const [RandomNum, setRandomNum] = useState(0)
     const [RandominatorRunning, setRandominatorRunning] = useState(true)
-    const [TimeInterval, setTimeInterval] = useState(2000)
+    const [TimeInterval, setTimeInterval] = useState(1)
 
     //Context--------------------------------
     const { state: { List, SelectedList } } = useContext(ListContext)
@@ -39,7 +39,7 @@ const RandominateScreen = ({ navigation }) => {
 
     //Choose the next item
     const NextSelection = () => {
-        setTimeInterval(latestTimeInterval => latestTimeInterval + 1000)
+        setTimeInterval(latestTimeInterval => latestTimeInterval + 2)
         RandomNumberGenerator()
         RandomColorGenerator()
     }
@@ -108,8 +108,6 @@ const RandominateScreen = ({ navigation }) => {
                 />
 
                 <SubHeader title={List[SelectedList].Name} />
-
-                {/* Delete this later */}
                 <SubHeader title={TimeInterval} />
 
                 <Spacer />
