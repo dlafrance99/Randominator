@@ -29,6 +29,23 @@ const Header = ({ title, design, target }) => {
                     <View style={styles.Flex} />
                 </View>
             )
+        } else if (design === 'Home') {
+            return (
+                <View style={styles.row}>
+                    <TouchableOpacity onPress={() => target()} style={styles.Flex}>
+                        <Ionicons
+                            name='md-home'
+                            style={[styles.Icon, { color: FontColor, textShadowColor: FontColor }]}
+                        />
+                    </TouchableOpacity>
+
+                    <Text style={[styles.Subheader, { color: FontColor, textShadowColor: FontColor }]}>
+                        {title}
+                    </Text>
+
+                    <View style={styles.Flex} />
+                </View>
+            )
         } else {
             return (
                 <Text style={[styles.Header, { color: FontColor, textShadowColor: FontColor }]}>

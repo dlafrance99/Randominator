@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { NavigationEvents } from 'react-navigation'
 
 const Countdown = ({ isActive, target, timeToChange }) => {
 
     const [Active, setActive] = useState(isActive)
 
     const handleTimeExpire = async () => {
-        await target()
-        setActive(true)
+        if (isActive) {
+            await target()
+            setActive(true)
+        } else {
+            setActive(false)
+        }
     }
 
     useEffect(() => {
@@ -22,7 +27,9 @@ const Countdown = ({ isActive, target, timeToChange }) => {
         return () => clearInterval(interval)
     }, [Active])
 
-    return null
+    return (
+        <NavigationEvents onWillFocus={() => setActive(true)} />
+    )
 }
 
 export default Countdown;

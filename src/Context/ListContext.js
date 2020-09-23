@@ -8,6 +8,8 @@ const ListReducer = (state, action) => {
             return { ...state, List: action.payload }
         case 'Change_Selected_List':
             return { ...state, SelectedList: action.payload }
+        case 'Change_Winner_Index':
+            return { ...state, WinnerIndex: action.payload }
         default:
             return state;
     }
@@ -38,8 +40,14 @@ const ChangeSelectedList = (dispatch) => {
     }
 }
 
+const ChangeWinnerIndex = (dispatch) => {
+    return (value) => {
+        dispatch({ type: 'Change_Winner_Index', payload: value })
+    }
+}
+
 export const { Provider, Context } = createDataContext(
     ListReducer,
-    { setList, fetchLocalLists, ChangeSelectedList },
-    { List: [], SelectedList: '' }
+    { setList, fetchLocalLists, ChangeSelectedList, ChangeWinnerIndex },
+    { List: [], SelectedList: '', WinnerIndex: 0 }
 )

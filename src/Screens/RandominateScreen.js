@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
+import { NavigationEvents } from 'react-navigation';
 import { Text } from 'react-native-elements';
 
 import { Context as ListContext } from '../Context/ListContext';
@@ -12,16 +13,34 @@ import Spacer from '../Components/Spacer';
 import Countdown from '../Components/Countdown';
 
 const RandominateScreen = ({ navigation }) => {
+    //Variables----------------------------
+    let timerIntervals = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 22, 24, 26, 28, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 125, 150, 175, 200, 300, 400, 500, 1000]
+
     //State--------------------------------
     const [RandomNum, setRandomNum] = useState(0)
     const [RandominatorRunning, setRandominatorRunning] = useState(true)
-    const [TimeInterval, setTimeInterval] = useState(1)
+
+    const [TimeInterval, setTimeInterval] = useState(timerIntervals[CurrentIndex])
+    const [CurrentIndex, setCurrentIndex] = useState(0)
+
+    const [WinnerSelected, setWinnerSelected] = useState(false)
+    const [WinnerFlashRunning, setWinnerFlashRunning] = useState(true)
 
     //Context--------------------------------
-    const { state: { List, SelectedList } } = useContext(ListContext)
+    const { state: { List, SelectedList, WinnerIndex }, ChangeWinnerIndex } = useContext(ListContext)
     const { state: { ListOfFontColors }, changeFontColor } = useContext(StylingContext)
 
     //Functions--------------------------------
+
+
+    //Reset
+    const Reset = () => {
+        setRandominatorRunning(true)
+        setTimeInterval(timerIntervals[0])
+        setCurrentIndex(0)
+        setWinnerSelected(false)
+        setWinnerFlashRunning(true)
+    }
 
     //Random Number Generator
     const RandomNumberGenerator = () => {
@@ -39,9 +58,32 @@ const RandominateScreen = ({ navigation }) => {
 
     //Choose the next item
     const NextSelection = () => {
-        setTimeInterval(latestTimeInterval => latestTimeInterval + 2)
-        RandomNumberGenerator()
-        RandomColorGenerator()
+        if (CurrentIndex < timerIntervals.length) {
+            setCurrentIndex(latestCurrentIndex => latestCurrentIndex + 1)
+            setTimeInterval(timerIntervals[CurrentIndex])
+            RandomNumberGenerator()
+            RandomColorGenerator()
+        } else {
+            setRandominatorRunning(false)
+            ChangeWinnerIndex(RandomNum)
+            setCurrentIndex(0)
+            setWinnerSelected(true)
+        }
+    }
+
+    //Show Winner Flashing
+    const WinnerFlash = () => {
+        if (CurrentIndex <= 7 && RandomNum === WinnerIndex) {
+            setRandomNum((List[SelectedList].Array.length) + 1)
+            setCurrentIndex(latestCurrentIndex => latestCurrentIndex + 1)
+        } else if (CurrentIndex <= 7 && RandomNum !== WinnerIndex) {
+            setRandomNum(WinnerIndex)
+            setCurrentIndex(latestCurrentIndex => latestCurrentIndex + 1)
+        } else {
+            setWinnerFlashRunning(false)
+            setRandomNum(WinnerIndex)
+            navigation.navigate('Winner')
+        }
     }
 
     //Show
@@ -94,6 +136,18 @@ const RandominateScreen = ({ navigation }) => {
     }
     return (
         <>
+            <NavigationEvents onWillFocus={() => Reset()} />
+            {
+                WinnerSelected
+                    ?
+                    <Countdown
+                        isActive={WinnerFlashRunning}
+                        target={() => WinnerFlash()}
+                        timeToChange={300}
+                    />
+                    :
+                    null
+            }
             <Countdown
                 isActive={RandominatorRunning}
                 target={() => NextSelection()}
@@ -108,7 +162,6 @@ const RandominateScreen = ({ navigation }) => {
                 />
 
                 <SubHeader title={List[SelectedList].Name} />
-                <SubHeader title={TimeInterval} />
 
                 <Spacer />
 

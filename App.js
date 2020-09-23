@@ -6,6 +6,7 @@ import { setNavigator } from './src/NavigationRef';
 
 import ResolveLoadingScreen from './src/Screens/ResolveLoadingScreen';
 import HomeScreen from './src/Screens/HomeScreen';
+import WinnerScreen from './src/Screens/WinnerScreen';
 import SelectListScreen from './src/Screens/SelectListScreen';
 import RandominateScreen from './src/Screens/RandominateScreen';
 import RandoNumberScreen from './src/Screens/RandoNumberScreen';
@@ -22,6 +23,7 @@ const stackNavigator = createSwitchNavigator({
   ResolveLoading: ResolveLoadingScreen,
   NormalFlow: createStackNavigator({
     Home: HomeScreen,
+    Winner: WinnerScreen,
     SelectList: SelectListScreen,
     Randominate: RandominateScreen,
     RandoNumber: RandoNumberScreen,
