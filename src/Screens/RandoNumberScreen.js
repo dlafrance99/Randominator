@@ -178,7 +178,7 @@ const RandoNumberScreen = ({ navigation }) => {
             </View>
         </>
     )
-}
+                }
 
 const styles = StyleSheet.create({
     wrapper: {
