@@ -5,7 +5,6 @@ import { Text } from 'react-native-elements';
 import { Context as ListContext } from '../Context/ListContext';
 
 import Header from '../Components/Header';
-import ChangeColor from '../Components/ChangeColor';
 import DeleteItemLayout from '../Components/DeleteItemLayout';
 import Spacer from '../Components/Spacer';
 import EditListNameLayout from '../Components/EditListNameLayout';
@@ -13,6 +12,7 @@ import DeleteListLayout from '../Components/DeleteListLayout';
 import DeleteConfirmationOverlay from '../Components/DeleteConfirmationOverlay';
 import PlusButton from '../Components/PlusButton';
 import GenericInput from '../Components/GenericInput';
+import ChangeColor from '../Components/ChangeColor';
 
 const SCREEN_WIDTH = Dimensions.get('window').width
 

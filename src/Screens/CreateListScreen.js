@@ -6,12 +6,12 @@ import { NavigationEvents } from 'react-navigation';
 import { Context as ListContext } from '../Context/ListContext';
 
 import Header from '../Components/Header';
-import Footer from '../Components/Footer';
 import GenericInput from '../Components/GenericInput';
 import GenericButton from '../Components/GenericButton';
 import Spacer from '../Components/Spacer';
 import PlusButton from '../Components/PlusButton';
 import ListingItems from '../Components/ListingItems';
+import ChangeColor from '../Components/ChangeColor';
 
 const SCREEN_WIDTH = Dimensions.get('window').width
 
@@ -40,7 +40,7 @@ const CreateListScreen = ({ navigation }) => {
             return setListNameError(true)
         }
 
-        if (Item!==''){
+        if (Item !== '') {
             ListItems.push(Item)
         }
 
@@ -76,10 +76,11 @@ const CreateListScreen = ({ navigation }) => {
     return (
         <>
             <NavigationEvents onWillFocus={() => Reset()} />
+            <ChangeColor />
             <View style={styles.wrapper}>
                 <Header
                     title='CREATE A LIST'
-                    design='Subheader'
+                    design='Home'
                     target={() => navigation.navigate('Home')}
                 />
 
@@ -128,7 +129,6 @@ const CreateListScreen = ({ navigation }) => {
                     target={() => saveList()}
                 />
 
-                <Footer />
             </View>
         </>
     )

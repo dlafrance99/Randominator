@@ -14,13 +14,6 @@ const Footer = ({ navigation }) => {
     return (
         <>
             <View style={styles.content}>
-                <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
-                    <FontAwesome
-                        name='gear'
-                        style={[styles.Icon, { color: FontColor, textShadowColor: FontColor }]}
-                    />
-                </TouchableOpacity>
-
                 <TouchableOpacity onPress={() => navigation.navigate('Info')}>
                     <FontAwesome
                         name='info-circle'
@@ -35,7 +28,7 @@ const Footer = ({ navigation }) => {
 const styles = StyleSheet.create({
     content: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-end',
         marginBottom: 15
     },
     Icon: {

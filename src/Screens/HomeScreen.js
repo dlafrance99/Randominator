@@ -1,6 +1,5 @@
-import React, { useEffect, useContext } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Text } from 'react-native-elements';
 
 import Header from '../Components/Header';
 import GenericButton from '../Components/GenericButton';
@@ -23,11 +22,11 @@ const HomeScreen = ({ navigation }) => {
                         style={styles.Butt}
                         target={() => navigation.navigate('SelectList')}
                     />
-                    
+
                     <GenericButton
                         title='RANDO NUMBER'
                         style={styles.Butt}
-                        target={() => navigation.navigate('RandoNumber')}
+                        target={() => navigation.navigate('RandoNumberInput')}
                     />
 
                     <GenericButton

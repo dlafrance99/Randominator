@@ -32,7 +32,6 @@ const RandominateScreen = ({ navigation }) => {
 
     //Functions--------------------------------
 
-
     //Reset
     const Reset = () => {
         setRandominatorRunning(true)

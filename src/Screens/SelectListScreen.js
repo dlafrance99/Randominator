@@ -4,9 +4,9 @@ import { Text } from 'react-native-elements';
 
 import { Context as ListContext } from '../Context/ListContext';
 
-import ChangeColor from '../Components/ChangeColor';
 import Header from '../Components/Header';
 import ListSelectionButt from '../Components/ListSelectionButt';
+import ChangeColor from '../Components/ChangeColor';
 
 const SelectListScreen = ({ navigation }) => {
 
@@ -36,14 +36,14 @@ const SelectListScreen = ({ navigation }) => {
         }
         return Lists;
     }
-    
+
     return (
         <>
             <ChangeColor />
             <View style={styles.wrapper}>
                 <Header
                     title='Select a List'
-                    design='Subheader'
+                    design='Home'
                     target={() => navigation.navigate('Home')}
                 />
 

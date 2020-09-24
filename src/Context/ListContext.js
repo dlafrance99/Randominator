@@ -10,6 +10,10 @@ const ListReducer = (state, action) => {
             return { ...state, SelectedList: action.payload }
         case 'Change_Winner_Index':
             return { ...state, WinnerIndex: action.payload }
+        case 'Change_Min_Number':
+            return { ...state, MinNumber: action.payload }
+        case 'Change_Max_Number':
+            return { ...state, MaxNumber: action.payload }
         default:
             return state;
     }
@@ -46,8 +50,20 @@ const ChangeWinnerIndex = (dispatch) => {
     }
 }
 
+const ChangeMinNumber = (dispatch) => {
+    return (value) => {
+        dispatch({ type: 'Change_Min_Number', payload: value })
+    }
+}
+
+const ChangeMaxNumber = (dispatch) => {
+    return (value) => {
+        dispatch({ type: 'Change_Max_Number', payload: value })
+    }
+}
+
 export const { Provider, Context } = createDataContext(
     ListReducer,
-    { setList, fetchLocalLists, ChangeSelectedList, ChangeWinnerIndex },
-    { List: [], SelectedList: '', WinnerIndex: 0 }
+    { setList, fetchLocalLists, ChangeSelectedList, ChangeWinnerIndex, ChangeMinNumber, ChangeMaxNumber },
+    { List: [], SelectedList: '', WinnerIndex: 0, MinNumber: '', MaxNumber: '' }
 )

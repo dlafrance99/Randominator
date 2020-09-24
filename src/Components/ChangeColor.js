@@ -1,38 +1,34 @@
-import React, { useContext, useEffect } from 'react';
-import { NavigationEvents } from 'react-navigation';
+import React, { useState, useContext, useEffect } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Text } from 'react-native-elements';
+import { NavigationEvents } from 'react-navigation'
 
-import { Context as StylingContext } from '../Context/StylingContext';
-
-import Countdown from '../Components/Countdown';
+import { Context as StylingContext } from '../Context/StylingContext'
 
 const ChangeColor = () => {
-    //Context
-    const { state: { ChangeColors, ListOfFontColors }, changeFontColor } = useContext(StylingContext)
 
-    //Functions
-    const updateFontColor = () => {
-        const randomNum = Math.floor(Math.random() * ListOfFontColors.length)
+    //State------------------------------------------------------
 
-        let newColor = ListOfFontColors[randomNum]
+    //Context----------------------------------------------------
+    const { state: { ListOfFontColors }, changeFontColor } = useContext(StylingContext)
 
-        if (newColor) {
-            changeFontColor(newColor)
-        } else {
-            changeFontColor(ListOfFontColors[0])
-        }
+    //Functions--------------------------------------------------
+
+    //Random Color Generator
+    const RandomColorGenerator = () => {
+        let ranNum = Math.floor(Math.random() * ListOfFontColors.length)
+
+        changeFontColor(ListOfFontColors[ranNum])
     }
+    //Show-------------------------------------------------------
 
     return (
-        <>
-            <NavigationEvents onWillFocus={() => updateFontColor()} />
-
-            <Countdown
-                isActive={ChangeColors}
-                target={() => updateFontColor()}
-                timeToChange={3000}
-            />
-        </>
+        <NavigationEvents onWillFocus={() => RandomColorGenerator()} />
     )
 }
+
+const styles = StyleSheet.create({
+
+})
 
 export default ChangeColor;

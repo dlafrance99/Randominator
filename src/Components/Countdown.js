@@ -28,7 +28,9 @@ const Countdown = ({ isActive, target, timeToChange }) => {
     }, [Active])
 
     return (
-        <NavigationEvents onWillFocus={() => setActive(true)} />
+        <>
+            <NavigationEvents onWillFocus={() => setActive(true)} />
+        </>
     )
 }
 

@@ -5,9 +5,9 @@ import { Text } from 'react-native-elements';
 import { Context as ListContext } from '../Context/ListContext';
 import { Context as StylingContext } from '../Context/StylingContext';
 
-import ChangeColor from '../Components/ChangeColor';
 import Header from '../Components/Header';
 import GenericButton from '../Components/GenericButton';
+import ChangeColor from '../Components/ChangeColor';
 
 const WinnerScreen = ({ navigation }) => {
 
@@ -40,7 +40,7 @@ const WinnerScreen = ({ navigation }) => {
 
                     <GenericButton
                         title='Try Again?'
-                        target={()=>navigation.navigate('Randominate')}
+                        target={() => navigation.navigate('Randominate')}
                     />
                 </View>
             </View>

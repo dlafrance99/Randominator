@@ -9,6 +9,7 @@ import HomeScreen from './src/Screens/HomeScreen';
 import WinnerScreen from './src/Screens/WinnerScreen';
 import SelectListScreen from './src/Screens/SelectListScreen';
 import RandominateScreen from './src/Screens/RandominateScreen';
+import RandoNumberInputScreen from './src/Screens/RandoNumberInputScreen';
 import RandoNumberScreen from './src/Screens/RandoNumberScreen';
 import CreateListScreen from './src/Screens/CreateListScreen';
 import SelectEditListScreen from './src/Screens/SelectEditListScreen';
@@ -26,6 +27,7 @@ const stackNavigator = createSwitchNavigator({
     Winner: WinnerScreen,
     SelectList: SelectListScreen,
     Randominate: RandominateScreen,
+    RandoNumberInput: RandoNumberInputScreen,
     RandoNumber: RandoNumberScreen,
     CreateList: CreateListScreen,
     SelectEditList: SelectEditListScreen,
