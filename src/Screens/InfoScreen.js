@@ -88,6 +88,8 @@ const InfoScreen = ({ navigation }) => {
 
                     <Spacer />
                     <Spacer />
+                    <Spacer />
+                    <Spacer />
                 </ScrollView>
             </View>
         </>

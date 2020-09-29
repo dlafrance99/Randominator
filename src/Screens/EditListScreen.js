@@ -122,12 +122,11 @@ const EditListScreen = ({ navigation }) => {
 
         for (let i = 0; i < List[SelectedList].Array.length; i++) {
             Item.push(
-                <>
-                    <DeleteItemLayout
-                        title={List[SelectedList].Array[i]}
-                        target={(value) => handleDeleteItem(value)}
-                    />
-                </>
+                <DeleteItemLayout
+                    title={List[SelectedList].Array[i]}
+                    target={(value) => handleDeleteItem(value)}
+                    key={i + List[SelectedList].Array[i]}
+                />
             )
         }
 
@@ -141,8 +140,9 @@ const EditListScreen = ({ navigation }) => {
             <View style={styles.wrapper}>
                 <Header
                     title={'Edit List: "' + CurrentList + '"'}
-                    design='Subheader'
+                    design='Sub-Home'
                     target={() => navigation.navigate('SelectEditList')}
+                    target2={()=>navigation.navigate('Home')}
                 />
 
                 <Spacer />

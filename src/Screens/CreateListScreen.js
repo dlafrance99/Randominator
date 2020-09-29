@@ -62,12 +62,10 @@ const CreateListScreen = ({ navigation }) => {
 
         for (let i = 0; i < ListItems.length; i++) {
             newList.push(
-                <>
                     <ListingItems
                         unit={ListItems[i]}
-                        key={ListItems[i]}
+                        key={i + ListItems[i]}
                     />
-                </>
             )
         }
         return newList;

@@ -89,50 +89,48 @@ const RandominateScreen = ({ navigation }) => {
     const showItems = () => {
         let Item = [];
 
-        if (List[SelectedList].Array.length < 4) {
+        if (List[SelectedList].Array.length <= 4) {
+
             for (let i = 0; i < List[SelectedList].Array.length; i++) {
                 Item.push(
-                    <>
+                    <ItemsLayout
+                        title={List[SelectedList].Array[i]}
+                        randoNum={RandomNum}
+                        index={i}
+                        key={i + List[SelectedList].Array[i]}
+                    />
+                )
+            }
 
+        } else if (List[SelectedList].Array.length > 4 && List[SelectedList].Array.length < 7) {
+
+            for (let i = 0; i < List[SelectedList].Array.length; i += 2) {
+                Item.push(
+                    <View key={i + List[SelectedList].Array[i]} style={styles.row}>
                         <ItemsLayout
                             title={List[SelectedList].Array[i]}
                             randoNum={RandomNum}
                             index={i}
                         />
-
-                    </>
+                        {
+                            List[SelectedList].Array[i + 1]
+                                ?
+                                <ItemsLayout
+                                    title={List[SelectedList].Array[i + 1]}
+                                    randoNum={RandomNum}
+                                    index={i + 1}
+                                />
+                                :
+                                null
+                        }
+                    </View>
                 )
             }
-        } else if (List[SelectedList].Array.length > 4 && List[SelectedList].Array.length < 7) {
 
-            for (let i = 0; i < List[SelectedList].Array.length; i += 2) {
-                Item.push(
-                    <>
-                        <View style={styles.row}>
-                            <ItemsLayout
-                                title={List[SelectedList].Array[i]}
-                                randoNum={RandomNum}
-                                index={i}
-                            />
-                            {
-                                List[SelectedList].Array[i + 1]
-                                    ?
-                                    <ItemsLayout
-                                        title={List[SelectedList].Array[i + 1]}
-                                        randoNum={RandomNum}
-                                        index={i + 1}
-                                    />
-                                    :
-                                    null
-                            }
-                        </View>
-                    </>
-                )
-            }
         }
-
         return Item;
     }
+
     return (
         <>
             <NavigationEvents onWillFocus={() => Reset()} />

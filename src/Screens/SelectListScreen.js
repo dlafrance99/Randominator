@@ -25,13 +25,11 @@ const SelectListScreen = ({ navigation }) => {
 
         for (let i = 0; i < List.length; i++) {
             Lists.push(
-                <>
-                    <ListSelectionButt
-                        title={List[i].Name}
-                        key={List[i].Name}
-                        target={() => handleListSelection(i)}
-                    />
-                </>
+                <ListSelectionButt
+                    title={List[i].Name}
+                    key={List[i].Name}
+                    target={() => handleListSelection(i)}
+                />
             )
         }
         return Lists;

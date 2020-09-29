@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons'
 
 import { Context as StylingContext } from '../Context/StylingContext';
 
-const Header = ({ title, design, target }) => {
+const Header = ({ title, design, target, target2 }) => {
     //Context
     const { state: { FontColor } } = useContext(StylingContext)
 
@@ -44,6 +44,28 @@ const Header = ({ title, design, target }) => {
                     </Text>
 
                     <View style={styles.Flex} />
+                </View>
+            )
+        } else if (design === 'Sub-Home') {
+            return (
+                <View style={styles.row}>
+                    <TouchableOpacity onPress={() => target()} style={styles.Flex}>
+                        <Ionicons
+                            name='ios-arrow-back'
+                            style={[styles.Icon, { color: FontColor, textShadowColor: FontColor }]}
+                        />
+                    </TouchableOpacity>
+
+                    <Text style={[styles.Subheader, { color: FontColor, textShadowColor: FontColor }]}>
+                        {title}
+                    </Text>
+
+                    <TouchableOpacity onPress={() => target2()} style={styles.Flex}>
+                        <Ionicons
+                            name='md-home'
+                            style={[styles.Icon, { color: FontColor, textShadowColor: FontColor }]}
+                        />
+                    </TouchableOpacity>
                 </View>
             )
         } else {
