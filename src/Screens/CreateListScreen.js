@@ -44,7 +44,11 @@ const CreateListScreen = ({ navigation }) => {
             ListItems.push(Item)
         }
 
-        setList([...List, { Name: ListName, Array: ListItems }])
+        if (List) {
+            setList([...List, { Name: ListName, Array: ListItems }])
+        } else {
+            setList([{ Name: ListName, Array: ListItems }])
+        }
 
         navigation.navigate('Home')
     }
@@ -62,10 +66,10 @@ const CreateListScreen = ({ navigation }) => {
 
         for (let i = 0; i < ListItems.length; i++) {
             newList.push(
-                    <ListingItems
-                        unit={ListItems[i]}
-                        key={i + ListItems[i]}
-                    />
+                <ListingItems
+                    unit={ListItems[i]}
+                    key={i + ListItems[i]}
+                />
             )
         }
         return newList;

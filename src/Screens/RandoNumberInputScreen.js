@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { View, StyleSheet, Dimensions } from 'react-native';
 import { Text } from 'react-native-elements';
+import { NavigationEvents } from 'react-navigation';
 
 import Header from '../Components/Header';
 import GenericInput from '../Components/GenericInput';
@@ -23,8 +24,12 @@ const RandoNumberInputScreen = ({ navigation }) => {
     //Functions--------------------------------
     //Random Number
     const RandomNum = () => {
-        if (MinNumber === '' || MaxNumber === '' || !parseInt(MinNumber) || !parseInt(MaxNumber)) {
+        if (MinNumber === '' || MaxNumber === '') {
             setError(true)
+            console.log('hit this one')
+        } else if ((!parseInt(MinNumber) && MinNumber !== 0) && (!parseInt(MaxNumber) && MaxNumber !== 0)) {
+            setError(true)
+            console.log('hit this two')
         } else {
             let Min = parseInt(MinNumber)
             let Max = parseInt(MaxNumber)
@@ -36,9 +41,11 @@ const RandoNumberInputScreen = ({ navigation }) => {
         }
     }
 
+
     return (
         <>
             <ChangeColor />
+            <NavigationEvents onWillFocus={() => setError(false)} />
             <View style={styles.wrapper}>
                 <Header
                     title='Select a List to Edit'

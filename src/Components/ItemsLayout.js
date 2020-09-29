@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     HeaderFont: {
         fontFamily: 'Kailasa-Bold',
         textAlign: 'center',
-        fontSize: 50,
+        fontSize: 40,
         textShadowRadius: 15
     },
 })

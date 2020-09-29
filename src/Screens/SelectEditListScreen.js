@@ -23,14 +23,16 @@ const SelectEditListScreen = ({ navigation }) => {
     const showLists = () => {
         let Lists = [];
 
-        for (let i = 0; i < List.length; i++) {
-            Lists.push(
-                <ListSelectionButt
-                    title={List[i].Name}
-                    key={List[i].Name}
-                    target={() => handleListSelection(i)}
-                />
-            )
+        if (List) {
+            for (let i = 0; i < List.length; i++) {
+                Lists.push(
+                    <ListSelectionButt
+                        title={List[i].Name}
+                        key={List[i].Name}
+                        target={() => handleListSelection(i)}
+                    />
+                )
+            }
         }
         return Lists;
     }
