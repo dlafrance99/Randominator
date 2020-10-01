@@ -8,6 +8,7 @@ import GenericInput from '../Components/GenericInput';
 import GenericButton from '../Components/GenericButton';
 import Spacer from '../Components/Spacer';
 import ChangeColor from '../Components/ChangeColor';
+import AdMobBan from '../Components/AdMobBan';
 
 import { Context as ListContext } from '../Context/ListContext';
 
@@ -48,7 +49,7 @@ const RandoNumberInputScreen = ({ navigation }) => {
             <NavigationEvents onWillFocus={() => setError(false)} />
             <View style={styles.wrapper}>
                 <Header
-                    title='Select a List to Edit'
+                    title='Select a Range'
                     design='Home'
                     target={() => navigation.navigate('Home')}
                 />
@@ -92,6 +93,8 @@ const RandoNumberInputScreen = ({ navigation }) => {
                     />
 
                 </View>
+                
+                <AdMobBan />
             </View>
         </>
     )

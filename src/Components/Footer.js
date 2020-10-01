@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     content: {
         flexDirection: 'row',
         justifyContent: 'flex-end',
-        marginBottom: 15
+        top: 20
     },
     Icon: {
         color: '#747474',

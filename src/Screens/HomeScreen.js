@@ -5,6 +5,7 @@ import Header from '../Components/Header';
 import GenericButton from '../Components/GenericButton';
 import Footer from '../Components/Footer';
 import ChangeColor from '../Components/ChangeColor';
+import AdMobBan from '../Components/AdMobBan';
 
 const HomeScreen = ({ navigation }) => {
 
@@ -44,6 +45,8 @@ const HomeScreen = ({ navigation }) => {
                 </View>
 
                 <Footer />
+
+                <AdMobBan />
             </View>
 
         </>

@@ -7,6 +7,7 @@ import { Context as ListContext } from '../Context/ListContext';
 import Header from '../Components/Header';
 import ListSelectionButt from '../Components/ListSelectionButt';
 import ChangeColor from '../Components/ChangeColor';
+import AdMobBan from '../Components/AdMobBan';
 
 const SelectEditListScreen = ({ navigation }) => {
 
@@ -50,6 +51,8 @@ const SelectEditListScreen = ({ navigation }) => {
                 <ScrollView style={styles.content}>
                     {showLists()}
                 </ScrollView>
+
+                <AdMobBan />
             </View>
         </>
     )

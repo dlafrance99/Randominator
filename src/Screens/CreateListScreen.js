@@ -12,6 +12,7 @@ import Spacer from '../Components/Spacer';
 import PlusButton from '../Components/PlusButton';
 import ListingItems from '../Components/ListingItems';
 import ChangeColor from '../Components/ChangeColor';
+import AdMobBan from '../Components/AdMobBan';
 
 const SCREEN_WIDTH = Dimensions.get('window').width
 
@@ -131,6 +132,7 @@ const CreateListScreen = ({ navigation }) => {
                     target={() => saveList()}
                 />
 
+                <AdMobBan />
             </View>
         </>
     )

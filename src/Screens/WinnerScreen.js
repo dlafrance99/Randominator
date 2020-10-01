@@ -8,6 +8,7 @@ import { Context as StylingContext } from '../Context/StylingContext';
 import Header from '../Components/Header';
 import GenericButton from '../Components/GenericButton';
 import ChangeColor from '../Components/ChangeColor';
+import AdMobBan from '../Components/AdMobBan';
 
 const WinnerScreen = ({ navigation }) => {
 
@@ -43,6 +44,8 @@ const WinnerScreen = ({ navigation }) => {
                         target={() => navigation.navigate('Randominate')}
                     />
                 </View>
+
+                <AdMobBan />
             </View>
         </>
     )

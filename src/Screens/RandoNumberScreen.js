@@ -11,6 +11,7 @@ import SubHeader from '../Components/SubHeader';
 import Spacer from '../Components/Spacer';
 import Countdown from '../Components/Countdown';
 import GenericButton from '../Components/GenericButton';
+import AdMobBan from '../Components/AdMobBan';
 
 const RandoNumberScreen = ({ navigation }) => {
     //Variables--------------------
@@ -152,8 +153,7 @@ const RandoNumberScreen = ({ navigation }) => {
                     }
                 </View>
 
-                <Spacer />
-                <Spacer />
+                <AdMobBan />
             </View>
         </>
     )
