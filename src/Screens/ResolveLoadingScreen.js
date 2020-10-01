@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { View } from 'react-native';
 
 import { Context as ListContext } from '../Context/ListContext';
 import { Context as StylingContext } from '../Context/StylingContext';
@@ -16,7 +17,9 @@ const ResolveLoadingScreen = ({ navigation }) => {
     }, [])
 
 
-    return null
+    return (
+        <View style={{ flex: 1, backgroundColor: '#09090a' }} />
+    )
 }
 
 export default ResolveLoadingScreen;
