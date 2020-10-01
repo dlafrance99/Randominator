@@ -27,7 +27,6 @@ const RandoNumberInputScreen = ({ navigation }) => {
     const RandomNum = () => {
         if (MinNumber === '' || MaxNumber === '') {
             setError(true)
-            console.log('hit this one')
         } else if ((!parseInt(MinNumber) && MinNumber !== 0) && (!parseInt(MaxNumber) && MaxNumber !== 0)) {
             setError(true)
             console.log('hit this two')
