@@ -4,7 +4,9 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 import { setNavigator } from './src/NavigationRef';
 
+import ResolveWarningScreen from './src/Screens/ResolveWarningScreen';
 import ResolveLoadingScreen from './src/Screens/ResolveLoadingScreen';
+import WarningScreen from './src/Screens/WarningScreen';
 import HomeScreen from './src/Screens/HomeScreen';
 import WinnerScreen from './src/Screens/WinnerScreen';
 import SelectListScreen from './src/Screens/SelectListScreen';
@@ -21,7 +23,9 @@ import { Provider as StylingProvider } from './src/Context/StylingContext';
 import { Provider as ListProvider } from './src/Context/ListContext';
 
 const stackNavigator = createSwitchNavigator({
+  ResolveWarning: ResolveWarningScreen,
   ResolveLoading: ResolveLoadingScreen,
+  Warning: WarningScreen,
   NormalFlow: createStackNavigator({
     Home: HomeScreen,
     Winner: WinnerScreen,

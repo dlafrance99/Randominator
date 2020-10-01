@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import { View, StyleSheet, ScrollView, Dimensions, Linking, TouchableOpacity } from 'react-native';
 import { Text } from 'react-native-elements';
 
 import { Context as StylingContext } from '../Context/StylingContext';
@@ -14,6 +14,17 @@ const InfoScreen = ({ navigation }) => {
 
     //Context---------------------------------------
     const { state: { FontColor } } = useContext(StylingContext)
+
+    //Functions-------------------------------------
+    const openUrl = async (url) => {
+        const supported = await Linking.canOpenURL(url)
+
+        if (supported) {
+            await Linking.openURL(url)
+        } else {
+            console.log('an error opening has occured')
+        }
+    }
 
     return (
         <>
@@ -88,6 +99,29 @@ const InfoScreen = ({ navigation }) => {
 
                     <Spacer />
                     <Spacer />
+
+                    <Text h4 style={[styles.SubHeader, { color: FontColor, textShadowColor: FontColor }]}>
+                        Want more information?
+                    </Text>
+
+                    <Spacer />
+
+                    <TouchableOpacity onPress={() => openUrl('https://docs.google.com/document/d/1NY-cqOgJSzOFGoFIbf8ngRxgKI2bvv5rnfPbSspmDTc/edit?usp=sharing')}>
+                        <Text style={styles.urlText}>
+                            Privacy Policy
+                        </Text>
+                    </TouchableOpacity>
+                    
+                    <Spacer />
+
+                    <TouchableOpacity onPress={() => openUrl('https://docs.google.com/document/d/1RbCXyFpxTEGcljU9oBQRb80lmU9MTwwftFGpmsflyEI/edit?usp=sharing')}>
+                        <Text style={styles.urlText}>
+                            Terms of Use
+                        </Text>
+                    </TouchableOpacity>
+
+                    <Spacer />
+                    <Spacer />
                     <Spacer />
                     <Spacer />
                 </ScrollView>
@@ -115,6 +149,18 @@ const styles = StyleSheet.create({
         fontFamily: 'Kailasa-Bold',
         textShadowRadius: 15,
         fontSize: 20
+    },
+    Row: {
+        flexDirection: 'row'
+    },
+    urlText: {
+        fontFamily: 'Kailasa-Bold',
+        textShadowRadius: 15,
+        fontSize: 20,
+        textAlign: 'center',
+        color: '#2015ad',
+        textShadowColor: '#2015ad',
+        textDecorationLine: 'underline'
     }
 })
 

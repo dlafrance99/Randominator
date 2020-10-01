@@ -101,23 +101,7 @@ const RandoNumberScreen = ({ navigation }) => {
         }
     }
 
-    //Show-------------------------
-
-    const showCountdown = () => {
-        if (RandominatorRunning) {
-            return (
-                <>
-                    <Countdown
-                        isActive={RandominatorRunning}
-                        target={() => NextSelection()}
-                        timeToChange={TimeInterval}
-                    />
-                </>
-            )
-        } else {
-            return null
-        }
-    }
+    //Show------------------------
 
     return (
         <>
@@ -131,16 +115,18 @@ const RandoNumberScreen = ({ navigation }) => {
                         timeToChange={300}
                     />
                     :
-                    null
+                    <Countdown
+                        isActive={RandominatorRunning}
+                        target={() => NextSelection()}
+                        timeToChange={TimeInterval}
+                    />
             }
-
-            {showCountdown()}
 
             <View style={styles.wrapper}>
                 <Header
                     title='Randominating'
-                    design='Subheader'
-                    target={() => navigation.navigate('RandoNumberInput')}
+                    design='Home'
+                    target={() => navigation.navigate('Home')}
                 />
 
                 <SubHeader title={MinNumber + " - " + MaxNumber} />
@@ -159,13 +145,6 @@ const RandoNumberScreen = ({ navigation }) => {
                                 <GenericButton
                                     title='Try Again?'
                                     target={() => Reset()}
-                                />
-
-                                <Spacer />
-
-                                <GenericButton
-                                    title='Done?'
-                                    target={() => navigation.navigate('Home')}
                                 />
                             </>
                             :
@@ -204,3 +183,8 @@ const styles = StyleSheet.create({
 })
 
 export default RandoNumberScreen;
+
+
+
+
+//Figure out why you're getting this error after running a Rando Number: Warning: Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in %s.%s, a useEffect cleanup function, in Countdown (at RandoNumberScreen.js:110)
