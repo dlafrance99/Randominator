@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { Text } from 'react-native-elements';
 
@@ -19,6 +19,10 @@ const SelectListScreen = ({ navigation }) => {
         ChangeSelectedList(value)
         navigation.navigate('Randominate')
     }
+
+    useEffect(() => {
+        console.log(List)
+    }, [])
 
     //Show
     const showListItems = () => {

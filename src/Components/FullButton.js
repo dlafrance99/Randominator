@@ -8,7 +8,7 @@ import { FontAwesome } from '@expo/vector-icons';
 
 const SCREEN_WIDTH = Dimensions.get('window').width
 
-const DeleteItemLayout = ({ title, target }) => {
+const FullButton = ({ title, target }) => {
 
     //Context
     const { state: { FontColor } } = useContext(StylingContext)
@@ -51,4 +51,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default DeleteItemLayout;
+export default FullButton;

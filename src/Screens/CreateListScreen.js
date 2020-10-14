@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { View, StyleSheet, Dimensions, ScrollView } from 'react-native';
-import { Text, Input } from 'react-native-elements';
+import { View, StyleSheet, Dimensions, ScrollView, Switch } from 'react-native';
+import { Text } from 'react-native-elements';
 import { NavigationEvents } from 'react-navigation';
 
 import { Context as ListContext } from '../Context/ListContext';
+import { Context as StylingContext } from '../Context/StylingContext';
 
 import Header from '../Components/Header';
 import GenericInput from '../Components/GenericInput';
@@ -23,11 +24,13 @@ const CreateListScreen = ({ navigation }) => {
     const [Item, setItem] = useState('')
     const [ListItems, setListItems] = useState([])
     const [ListNameError, setListNameError] = useState(false)
-    const [ErrorText, setErrorText] = useState('false')
+    const [ErrorText, setErrorText] = useState('')
+    const [ReductionList, setReductionList] = useState(false)
 
 
     //Context
     const { state: { List }, setList } = useContext(ListContext)
+    const { state: { FontColor } } = useContext(StylingContext)
 
     //Functions
     const addMoreItems = () => {
@@ -45,8 +48,12 @@ const CreateListScreen = ({ navigation }) => {
             ListItems.push(Item)
         }
 
-        if (List) {
+        if (List && !ReductionList) {
             setList([...List, { Name: ListName, Array: ListItems }])
+        } else if (List && ReductionList) {
+            setList([...List, { Name: ListName, Array: ListItems, Reduction: true, usedArray: [] }])
+        } else if (!List && ReductionList) {
+            setList([{ Name: ListName, Array: ListItems, Reduction: true, usedArray: [] }])
         } else {
             setList([{ Name: ListName, Array: ListItems }])
         }
@@ -76,6 +83,14 @@ const CreateListScreen = ({ navigation }) => {
         return newList;
     }
 
+    const handleReductionSwitch = () => {
+        if (ReductionList) {
+            setReductionList(false)
+        } else {
+            setReductionList(true)
+        }
+    }
+
     return (
         <>
             <NavigationEvents onWillFocus={() => Reset()} />
@@ -88,6 +103,21 @@ const CreateListScreen = ({ navigation }) => {
                 />
 
                 <ScrollView style={styles.Content}>
+                    <View style={styles.Row}>
+                        <Text style={[styles.Text, { color: FontColor, textShadowColor: FontColor }]}>
+                            Reducer List?
+                        </Text>
+
+                        <Switch
+                            value={ReductionList}
+                            onValueChange={() => handleReductionSwitch()}
+                            trackColor={{ true: FontColor }}
+                        />
+                    </View>
+
+                    <Spacer />
+                    <Spacer />
+
                     <GenericInput
                         title='List Name'
                         val={ListName}
@@ -151,6 +181,16 @@ const styles = StyleSheet.create({
     errorText: {
         color: 'red',
         alignSelf: 'center'
+    },
+    Row: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+    },
+    Text: {
+        fontFamily: 'Kailasa-Bold',
+        textAlign: 'center',
+        textShadowRadius: 10,
+        fontSize: 25
     }
 })
 

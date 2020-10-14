@@ -68,6 +68,12 @@ const Header = ({ title, design, target, target2 }) => {
                     </TouchableOpacity>
                 </View>
             )
+        } else if (design === 'Sub') {
+            return (
+                <Text style={[styles.Sub, { color: FontColor, textShadowColor: FontColor }]}>
+                    {title}
+                </Text>
+            )
         } else {
             return (
                 <Text style={[styles.Header, { color: FontColor, textShadowColor: FontColor }]}>
@@ -98,6 +104,13 @@ const styles = StyleSheet.create({
         marginTop: 50,
         fontSize: 40,
         flex: 5,
+        textShadowRadius: 15
+    },
+    Sub: {
+        fontFamily: 'Kailasa-Bold',
+        textAlign: 'center',
+        fontSize: 30,
+        flex: 1,
         textShadowRadius: 15
     },
     row: {

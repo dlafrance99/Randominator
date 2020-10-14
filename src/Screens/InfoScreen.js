@@ -57,6 +57,16 @@ const InfoScreen = ({ navigation }) => {
                     <Text style={[styles.Text, { color: FontColor, textShadowColor: FontColor }]}>
                         To create a list, simply head to the home page (from here you can hit the icon that looks like a home in the top left). From there, select 'Create List', and enter a name for your list and start adding items to your list using the input fields (Don't worry you can edit all of this later). Add as many items as you'd like to your list! Don't forget to hit 'Save List' when you're done!
                     </Text>
+                    
+                    <Text style={[styles.SubHeader, { color: FontColor, textShadowColor: FontColor }]}>
+                        Reducer List
+                    </Text>
+
+                    <Spacer />
+
+                    <Text style={[styles.Text, { color: FontColor, textShadowColor: FontColor }]}>
+                        A Reducer List is a selection you can make when creating a new list. This is a special kind of list that will remove the item from the list once it's been selected (e.g. original list = 1,2,3 then after 2 is selected the new list = 1,3). Don't worry though, we'll keep the already selected items and will automatically refill the list once every item has been selected! If you want to manually reset the list, simply head to the "Edit Lists" screen and hit the "Reset Selected" button to instantly reset your list!
+                    </Text>
 
                     <Spacer />
                     <Spacer />
@@ -143,7 +153,8 @@ const styles = StyleSheet.create({
     SubHeader: {
         fontFamily: 'Kailasa-Bold',
         textShadowRadius: 15,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontSize: 20
     },
     Text: {
         fontFamily: 'Kailasa-Bold',

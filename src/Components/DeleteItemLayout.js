@@ -16,9 +16,9 @@ const DeleteItemLayout = ({ title, target }) => {
     return (
         <>
             <View style={[styles.Border, { borderColor: FontColor, shadowColor: FontColor }]}>
-                <Text style={[styles.HeaderFont, { color: FontColor, textShadowColor: FontColor }]}>
-                    {title}
-                </Text>
+                    <Text style={[styles.HeaderFont, { color: FontColor, textShadowColor: FontColor }]}>
+                        {title}
+                    </Text>
 
                 <TouchableOpacity onPress={() => target(title)} style={styles.Butt}>
                     <FontAwesome
@@ -45,12 +45,12 @@ const styles = StyleSheet.create({
     HeaderFont: {
         fontFamily: 'Kailasa-Bold',
         textAlign: 'center',
-        fontSize: 50,
         textShadowRadius: 15,
-        flex: 1
+        fontSize: 40,
+        flex: 1,
     },
     Icon: {
-        fontSize: 50,
+        fontSize: 40,
         marginRight: 15,
     },
     Butt: {
