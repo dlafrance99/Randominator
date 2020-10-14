@@ -2,7 +2,7 @@
   "expo": {
     "name": "Randominator",
     "slug": "Randominator",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -18,7 +18,7 @@
     ],
     "ios": {
       "bundleIdentifier": "com.nawdevelopment.Randominator",
-      "buildNumber": "1.0.0",
+      "buildNumber": "1.0.1",
       "supportsTablet": true,
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-8611757228555808~6759648222"
