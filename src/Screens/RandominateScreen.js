@@ -9,6 +9,7 @@ import { Context as StylingContext } from '../Context/StylingContext';
 import Header from '../Components/Header';
 import SubHeader from '../Components/SubHeader';
 import ItemsLayout from '../Components/ItemsLayout';
+import IndividualItemLayout from '../Components/IndividualItemLayout';
 import Spacer from '../Components/Spacer';
 import Countdown from '../Components/Countdown';
 
@@ -102,7 +103,7 @@ const RandominateScreen = ({ navigation }) => {
                 )
             }
 
-        } else if (List[SelectedList].Array.length > 4 && List[SelectedList].Array.length < 7) {
+        } else if (List[SelectedList].Array.length > 4 && List[SelectedList].Array.length <= 20) {
 
             for (let i = 0; i < List[SelectedList].Array.length; i += 2) {
                 Item.push(
@@ -126,6 +127,17 @@ const RandominateScreen = ({ navigation }) => {
                     </View>
                 )
             }
+
+        } else if (List[SelectedList].Array.length > 20) {
+            return (
+                <IndividualItemLayout
+                    title={List[SelectedList].Array[RandomNum]}
+                    randoNum={RandomNum}
+                    winnerIndex={WinnerIndex}
+                    winnerTitle={List[SelectedList].Array[WinnerIndex]}
+                    winnerSelction={WinnerSelected}
+                />
+            )
 
         }
         return Item;
